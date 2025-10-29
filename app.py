@@ -719,7 +719,8 @@ def init_db():
             expiry_date DATE,
             status VARCHAR(20) DEFAULT 'Available',
             date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            INDEX idx_medicine_id (medicine_id)
         )
     ''')
     
@@ -738,6 +739,7 @@ def init_db():
             status VARCHAR(20) DEFAULT 'Available',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            KEY idx_medicine_id (medicine_id),
             FOREIGN KEY (medicine_id) REFERENCES medicines(medicine_id) ON DELETE CASCADE
         )
     ''')
@@ -14641,8 +14643,15 @@ def schedule_inventory_notification():
 
 if __name__ == '__main__':
     # Initialize database on startup
-    print("🔧 Initializing database with sample data...")
-    init_db()
-    print("✅ Database initialization complete!")
+    # NOTE: Database initialization disabled - using existing AWS database
+    # Uncomment the lines below if you need to recreate tables
+    # print("🔧 Initializing database with sample data...")
+    # init_db()
+    # print("✅ Database initialization complete!")
+    
+    print("🚀 Starting iClinic V.2...")
+    print("📊 Connected to AWS MySQL Database")
+    print("🌐 Access the application at: http://127.0.0.1:5000")
+    
     # Run the application
     app.run(debug=True, host='0.0.0.0', port=5000)

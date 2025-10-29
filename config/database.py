@@ -6,10 +6,10 @@ class DatabaseConfig:
     """Database configuration for XAMPP MySQL connection"""
     
     # XAMPP MySQL default settings
-    MYSQL_HOST = 'localhost'
+    MYSQL_HOST = 'intellevalpro.cx4waogceerc.ap-southeast-2.rds.amazonaws.com'
     MYSQL_PORT = 3306
-    MYSQL_USER = 'root'
-    MYSQL_PASSWORD = ''  # Default XAMPP MySQL has no password
+    MYSQL_USER = 'admin'
+    MYSQL_PASSWORD = '12345678'  # Default XAMPP MySQL has no password
     MYSQL_DATABASE = 'iclinic_db'
     
     @staticmethod
